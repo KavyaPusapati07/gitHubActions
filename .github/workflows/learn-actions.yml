@@ -12,5 +12,4 @@ jobs:
   steps:
   - name: Test
     run: |
-     $sLoc= "//ent/dfs/dotnet/'${{github.event.inputs.buildType}}'"
-     echo $sLoc
+     echo "//ent/dfs/dotnet/'${{github.event.inputs.buildType}}'"
