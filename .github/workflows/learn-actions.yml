@@ -1,15 +1,16 @@
 name: learn-actions
-on: [push]
+on:
+ push:
+  branches: main
+ workflow_dispatch:
+  inputs:
+   buildType:
+    default: DEV
 jobs:
-     example-job:
-         name: Save output
-         steps:
-              - shell: bash
-                run: |
-                 expr 1 + 1 > output.log
-              - name: Upload output file
-                uses: actions/upload-artifact@v3
-                with:
-                 name: output-log-file
-                 path: output.log
-      
+ build:
+  runs-on: windows-latest
+  steps:
+  - name: Test
+    run: |
+     $sLoc= "//ent/dfs/dotnet/${{github.event.inputs.buildType}}"
+     echo $sLoc
